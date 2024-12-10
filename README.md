@@ -64,6 +64,18 @@ Yandex Kittygram - это веб-приложение, предназначен�
    docker compose exec backend python manage.py migrate
 ```
 
+7. Соберите статику:
+
+```
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+```
+
+8. Скопируйте статитку, на static_voluem
+
+```
+sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/static/. /backend_static/static/
+```
+
 ## Настройка файла .env
 
 Для корректной работы приложения необходимо создать файл `.env` в корневой директории проекта и заполнить его следующими переменными окружения:
